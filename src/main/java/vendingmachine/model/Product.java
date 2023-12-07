@@ -20,5 +20,6 @@ public class Product {
 
     private void validate(String price) {
         Validator.checkMoneyRange(price);
+        Validator.checkMoneyDivide(price);
     }
 }
