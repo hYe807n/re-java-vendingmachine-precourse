@@ -18,18 +18,6 @@ public class Product {
         validate(product.split(PRODUCT_DIVISION)[INDEX_PRICE]);
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
     public boolean isSoldOut() {
         return this.count == 0;
     }
@@ -45,5 +33,10 @@ public class Product {
     private void validate(String price) {
         Validator.checkMoneyRange(price);
         Validator.checkMoneyDivide(price);
+    }
+
+    public int calculateAmount(int money) {
+        this.count -= 1;
+        return money - this.price;
     }
 }

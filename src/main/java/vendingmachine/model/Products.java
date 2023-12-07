@@ -23,16 +23,18 @@ public class Products {
             .orElseThrow(() -> new IllegalArgumentException(Exception.PURCHASE_EXCEPTION.getMessage()));
     }
 
-    public void purchase(int money, String productName) {
+    public int purchase(int money, String productName) {
         Validator.checkPurchaseState(money, productName, this);
+        Product product = findByName(productName);
+        return product.calculateAmount(money);
     }
 
     public boolean isAllSoldOut() {
-        return this.products.stream().allMatch(product -> product.getCount() == 0);
+        return this.products.stream().allMatch(Product::isSoldOut);
     }
 
     public boolean isLessMinimumPrice(int money) {
-        return money < this.products.stream().mapToInt(Product::getPrice).max().getAsInt();
+        return this.products.stream().allMatch(product -> product.isExpensive(money));
     }
 
     private void validate(String products) {
