@@ -16,9 +16,15 @@ public class Products {
             .forEach(product -> new Product(product.replace("[]", "")));
     }
 
+    public Product findByName(String name) {
+        return this.products.stream()
+            .filter(product -> product.isSameProduct(name))
+            .findFirst()
+            .orElseThrow(() -> new IllegalArgumentException(Exception.PURCHASE_EXCEPTION.getMessage()));
+    }
 
     public void purchase(int money, String productName) {
-        Validator.checkPurchaseState(money, productName, this.products);
+        Validator.checkPurchaseState(money, productName, this);
     }
 
     public boolean isAllSoldOut() {

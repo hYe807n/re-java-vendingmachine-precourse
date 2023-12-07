@@ -34,6 +34,10 @@ public class Product {
         return this.count == 0;
     }
 
+    public boolean isExpensive(int money) {
+        return money < this.price;
+    }
+
     public boolean isSameProduct(String name) {
         return name.equals(this.name);
     }
