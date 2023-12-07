@@ -8,15 +8,26 @@ import vendingmachine.view.OutputView;
 public class MachineController {
 
     private Machine machine;
+    private Products products;
 
     public void run() {
         initializeMachineMoney();
         machineCoins();
         machineProducts();
+        userCoins();
+    }
+
+    private void userCoins() {
+        InputView.readUserMoney();
     }
 
     private void machineProducts() {
-        new Products(InputView.readMachineProduct());
+        try {
+            this.products = new Products(InputView.readMachineProduct());
+        } catch (IllegalArgumentException exception) {
+            OutputView.printException(exception.getMessage());
+            machineProducts();
+        }
     }
 
     private void machineCoins() {

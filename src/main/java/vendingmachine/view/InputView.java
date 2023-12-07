@@ -13,4 +13,9 @@ public class InputView {
         OutputView.printProductDemand();
         return readLine().trim();
     }
+
+    public static String readUserMoney() {
+        OutputView.printUserMoneyDemand();
+        return readLine().trim();
+    }
 }

@@ -27,4 +27,8 @@ public class OutputView {
     public static void printProductDemand() {
         System.out.println(Form.MACHINE_PRODUCT_DEMAND.getMessage());
     }
+
+    public static void printUserMoneyDemand() {
+        System.out.println(Form.USER_MONEY_DEMAND.getMessage());
+    }
 }
