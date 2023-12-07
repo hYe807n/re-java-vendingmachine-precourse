@@ -23,4 +23,8 @@ public class OutputView {
     public static void printCoin(int coin, int count) {
         System.out.println(MessageFormat.format(Form.MACHINE_COIN.getMessage(), coin, count));
     }
+
+    public static void printProductDemand() {
+        System.out.println(Form.MACHINE_PRODUCT_DEMAND.getMessage());
+    }
 }

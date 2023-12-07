@@ -8,4 +8,9 @@ public class InputView {
         OutputView.printMachineMoneyDemand();
         return readLine().trim();
     }
+
+    public static String readMachineProduct() {
+        OutputView.printProductDemand();
+        return readLine().trim();
+    }
 }

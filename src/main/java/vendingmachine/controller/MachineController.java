@@ -11,6 +11,11 @@ public class MachineController {
     public void run() {
         initializeMachineMoney();
         machineCoins();
+        machineProducts();
+    }
+
+    private void machineProducts() {
+        InputView.readMachineProduct();
     }
 
     private void machineCoins() {
