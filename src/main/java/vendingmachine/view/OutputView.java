@@ -33,10 +33,18 @@ public class OutputView {
     }
 
     public static void printAmount(int amount) {
-        System.out.println(Form.AMOUNT.getMessage());
+        System.out.println(MessageFormat.format(Form.AMOUNT.getMessage(), amount));
     }
 
     public static void printPurchaseDemand() {
         System.out.println(Form.PURCHASE_PRODUCT_DEMAND.getMessage());
+    }
+
+    public static void printChange() {
+        System.out.println(Form.CHANGE_COINS.getMessage());
+    }
+
+    public static void printChangeCoin(int coin, int count) {
+        System.out.println(MessageFormat.format(Form.MACHINE_COIN.getMessage(), coin, count));
     }
 }

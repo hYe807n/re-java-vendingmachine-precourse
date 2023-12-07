@@ -4,13 +4,13 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 import vendingmachine.enums.Coin;
 
 public class Machine {
 
     private final int money;
-    private Products products;
     private final Map<Coin, Integer> coins;
 
     public Machine(String money) {
@@ -29,9 +29,33 @@ public class Machine {
         while (money != 0) {
             int coin = Random.pickCoin(coinsToRandom(money));
             money -= coin;
-            coins.put(Coin.findByAmount(coin), coins.get(Coin.findByAmount(coin))+1);
+            coins.put(Coin.findByAmount(coin), coins.get(Coin.findByAmount(coin)) + 1);
         }
         return coins;
+    }
+
+    public Map<Coin, Integer> calculateChangeCoins(int money) {
+        Map<Coin, Integer> changeCoins = initializeCoins();
+        while (money <= Coin.COIN_10.getAmount()
+            || coins.values().stream().allMatch(count -> count == 0)) {
+            Coin coin = findMaxCoin(money);
+            changeCoins.put(coin, changeCoins.get(coin) + 1);
+            coins.put(coin, coins.get(coin) + 1);
+            money -= findMaxCoin(money).getAmount();
+        }
+        return removeZeroValue(changeCoins);
+    }
+
+    private Map<Coin, Integer> removeZeroValue(Map<Coin, Integer> coins) {
+        return coins.entrySet().stream()
+            .filter(coin -> coin.getValue() > 0)
+            .collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+    }
+
+    private Coin findMaxCoin(int money) {
+        return Arrays.stream(Coin.values())
+            .filter(coin -> coin.getAmount() >= money && coins.get(coin) > 0)
+            .findFirst().orElse(Coin.EMPTY);
     }
 
     private Map<Coin, Integer> initializeCoins() {

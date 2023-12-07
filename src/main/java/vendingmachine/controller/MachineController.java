@@ -26,6 +26,14 @@ public class MachineController {
             OutputView.printAmount(money);
             money = products.purchase(money, InputView.readPurchaseProduct());
         }
+        changeCoins(money);
+    }
+
+    private void changeCoins(int money) {
+        OutputView.printAmount(money);
+        OutputView.printChange();
+        machine.calculateChangeCoins(money)
+            .forEach((key, value) -> OutputView.printChangeCoin(key.getAmount(), value));
     }
 
     private boolean checkPurchase(int money) {
