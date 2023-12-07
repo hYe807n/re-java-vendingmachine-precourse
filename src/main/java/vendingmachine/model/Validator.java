@@ -19,4 +19,10 @@ public class Validator {
             throw new IllegalArgumentException(Exception.MONEY_RANGE_EXCEPTION.getMessage());
         }
     }
+
+    public static void checkMoneyDivide(String money) {
+        if (Integer.parseInt(money) % Coin.COIN_50.getAmount() != 0) {
+            throw new IllegalArgumentException(Exception.MONEY_DIVIDE_EXCEPTION.getMessage());
+        }
+    }
 }

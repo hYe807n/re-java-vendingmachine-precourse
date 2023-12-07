@@ -12,5 +12,6 @@ public class Machine {
     private void validate(String money) {
         Validator.checkOnlyNumber(money);
         Validator.checkMoneyRange(money);
+        Validator.checkMoneyDivide(money);
     }
 }
