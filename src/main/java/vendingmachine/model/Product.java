@@ -30,6 +30,9 @@ public class Product {
         return price;
     }
 
+    public boolean isSameProduct(String name) {
+        return name.equals(this.name);
+    }
 
     private void validate(String price) {
         Validator.checkMoneyRange(price);

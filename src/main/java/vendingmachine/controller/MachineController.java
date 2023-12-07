@@ -24,6 +24,7 @@ public class MachineController {
         int money = this.user.getMoney();
         while (checkPurchase(money)) {
             OutputView.printAmount(money);
+            products.purchase(money, InputView.readPurchaseProduct());
         }
     }
 

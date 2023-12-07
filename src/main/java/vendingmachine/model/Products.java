@@ -2,6 +2,7 @@ package vendingmachine.model;
 
 import java.util.Arrays;
 import java.util.List;
+import vendingmachine.enums.Exception;
 
 public class Products {
 
@@ -13,6 +14,11 @@ public class Products {
         validate(products);
         Arrays.stream(products.split(PRODUCTS_DIVISION))
             .forEach(product -> new Product(product.replace("[]", "")));
+    }
+
+
+    public void purchase(int money, String productName) {
+        Validator.checkPurchaseState(money, productName, this.products);
     }
 
     public boolean isAllSoldOut() {

@@ -10,6 +10,7 @@ import vendingmachine.enums.Coin;
 public class Machine {
 
     private final int money;
+    private Products products;
     private final Map<Coin, Integer> coins;
 
     public Machine(String money) {
@@ -53,6 +54,4 @@ public class Machine {
         Validator.checkMoneyRange(money);
         Validator.checkMoneyDivide(money);
     }
-
-
 }

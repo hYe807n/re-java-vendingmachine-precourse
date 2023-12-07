@@ -1,5 +1,7 @@
 package vendingmachine.model;
 
+import java.util.List;
+import sun.misc.JavaSecurityProtectionDomainAccess.ProtectionDomainCache;
 import vendingmachine.enums.Coin;
 import vendingmachine.enums.Exception;
 
@@ -13,6 +15,12 @@ public class Validator {
             return;
         }
         throw new IllegalArgumentException(Exception.NUMBER_EXCEPTION.getMessage());
+    }
+
+    public static void checkPurchaseState(int money, String productName, List<Product> products) {
+        if (products.stream().noneMatch(product -> product.isSameProduct(productName))) {
+            throw new IllegalArgumentException(Exception.NONE_EXIST_PRODUCT.getMessage());
+        }
     }
 
     public static void checkProductsForm(String products) {
