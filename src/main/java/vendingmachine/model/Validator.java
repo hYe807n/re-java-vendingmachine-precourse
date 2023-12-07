@@ -6,12 +6,20 @@ import vendingmachine.enums.Exception;
 public class Validator {
 
     private static final String NUMBER_EXPRESSION = "^[0-9]+$";
+    private static final String PRODUCTS_EXPRESSION = "^(\\[[가-힣]+,[0-9]+,[0-9]+\\])+(;\\[[가-힣]+,[0-9]+,[0-9]+\\])*$";
 
     public static void checkOnlyNumber(String money) {
         if (money.matches(NUMBER_EXPRESSION)) {
             return;
         }
         throw new IllegalArgumentException(Exception.NUMBER_EXCEPTION.getMessage());
+    }
+
+    public static void checkProductsForm(String products) {
+        if (products.matches(PRODUCTS_EXPRESSION)) {
+            return;
+        }
+        throw new IllegalArgumentException(Exception.PRODUCTS_EXCEPTION.getMessage());
     }
 
     public static void checkMoneyRange(String money) {

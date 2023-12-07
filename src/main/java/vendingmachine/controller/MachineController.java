@@ -1,6 +1,7 @@
 package vendingmachine.controller;
 
 import vendingmachine.model.Machine;
+import vendingmachine.model.Products;
 import vendingmachine.view.InputView;
 import vendingmachine.view.OutputView;
 
@@ -15,7 +16,7 @@ public class MachineController {
     }
 
     private void machineProducts() {
-        InputView.readMachineProduct();
+        new Products(InputView.readMachineProduct());
     }
 
     private void machineCoins() {
