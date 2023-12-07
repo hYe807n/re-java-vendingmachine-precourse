@@ -1,11 +1,11 @@
 package vendingmachine.model;
 
+import vendingmachine.enums.Coin;
 import vendingmachine.enums.Exception;
 
 public class Validator {
 
     private static final String NUMBER_EXPRESSION = "^[0-9]+$";
-    private static final int MINIMUM_MONEY = 100;
 
     public static void checkOnlyNumber(String money) {
         if (money.matches(NUMBER_EXPRESSION)) {
@@ -15,7 +15,7 @@ public class Validator {
     }
 
     public static void checkMoneyRange(String money) {
-        if (Integer.parseInt(money) < MINIMUM_MONEY) {
+        if (Integer.parseInt(money) < Coin.COIN_100.getAmount()) {
             throw new IllegalArgumentException(Exception.MONEY_RANGE_EXCEPTION.getMessage());
         }
     }
