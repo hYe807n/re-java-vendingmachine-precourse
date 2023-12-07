@@ -30,6 +30,10 @@ public class Product {
         return price;
     }
 
+    public boolean isSoldOut() {
+        return this.count == 0;
+    }
+
     public boolean isSameProduct(String name) {
         return name.equals(this.name);
     }

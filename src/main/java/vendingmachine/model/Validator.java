@@ -18,7 +18,8 @@ public class Validator {
     }
 
     public static void checkPurchaseState(int money, String productName, List<Product> products) {
-        if (products.stream().noneMatch(product -> product.isSameProduct(productName))) {
+        if (products.stream().noneMatch(product -> product.isSameProduct(productName))
+        || products.stream().allMatch(Product::isSoldOut)) {
             throw new IllegalArgumentException(Exception.NONE_EXIST_PRODUCT.getMessage());
         }
     }
