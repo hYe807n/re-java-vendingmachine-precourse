@@ -1,6 +1,6 @@
 package vendingmachine.model;
 
-import vendingmachine.view.InputView;
+import vendingmachine.enums.Coin;
 
 public class User {
 
@@ -9,6 +9,14 @@ public class User {
     public User(String money) {
         validate(money);
         this.money = Integer.parseInt(money);
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public boolean isLessMinimumCoin() {
+        return this.money < Coin.COIN_10.getAmount();
     }
 
     private void validate(String money) {

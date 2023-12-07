@@ -8,15 +8,28 @@ public class Product {
     private static final int INDEX_COUNT = 2;
 
     private final String name;
-    private final String price;
-    private final String count;
+    private final int price;
+    private int count;
 
     public Product(String product) {
         this.name = product.split(PRODUCT_DIVISION)[INDEX_NAME];
-        this.price = product.split(PRODUCT_DIVISION)[INDEX_PRICE];
-        this.count = product.split(PRODUCT_DIVISION)[INDEX_COUNT];
-        validate(this.price);
+        this.price = Integer.parseInt(product.split(PRODUCT_DIVISION)[INDEX_PRICE]);
+        this.count = Integer.parseInt(product.split(PRODUCT_DIVISION)[INDEX_COUNT]);
+        validate(product.split(PRODUCT_DIVISION)[INDEX_PRICE]);
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
 
     private void validate(String price) {
         Validator.checkMoneyRange(price);
