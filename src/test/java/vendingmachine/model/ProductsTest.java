@@ -44,4 +44,10 @@ class ProductsTest {
     void checkPurchaseNotAllowed() {
         Assertions.assertFalse(new Products("[콜라,1000,1];[사이다,1500,2]").checkPurchase(10));
     }
+
+    @DisplayName("모든 상품의 개수가 0 개 아니라면 false 반환")
+    @Test
+    void isNotAllSoldOut() {
+        Assertions.assertTrue(new Products("[콜라,1000,1];[사이다,1500,0]").isAllSoldOut());
+    }
 }
