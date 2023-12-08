@@ -1,7 +1,5 @@
 package vendingmachine.model;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,5 +22,11 @@ class ProductTest {
     @Test
     void isSoldOut() {
         Assertions.assertFalse(new Product("콜라,1000,0").isSoldOut());
+    }
+
+    @DisplayName("제품 가격이 현재 돈보다 비싸면 true 반환")
+    @Test
+    void isExpensive() {
+        Assertions.assertFalse(new Product("콜라,1000,1").isExpensive(500));
     }
 }
