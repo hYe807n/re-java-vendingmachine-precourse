@@ -38,4 +38,10 @@ class ProductsTest {
         Assertions.assertThrows(IllegalArgumentException.class,
             () -> new Products("[콜라,1000,1];[사이다,1500,2]").findByName("복숭아"));
     }
+
+    @DisplayName("투입 금액이 상품 가격 100 원 최소값보다 적다면 제품 구매 상태 false 반환")
+    @Test
+    void checkPurchaseNotAllowed() {
+        Assertions.assertFalse(new Products("[콜라,1000,1];[사이다,1500,2]").checkPurchase(10));
+    }
 }

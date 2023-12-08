@@ -46,7 +46,7 @@ public class Products {
 
 
     public boolean checkPurchase(int money) {
-        return !(money < Coin.COIN_10.getAmount()
+        return !(money < Coin.COIN_100.getAmount()
             || isAllSoldOut()
             || isLessMinimumPrice(money));
     }
