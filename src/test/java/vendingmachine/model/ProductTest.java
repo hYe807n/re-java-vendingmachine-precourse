@@ -21,24 +21,24 @@ class ProductTest {
     @DisplayName("상품 개수가 0 개라면 품절 상태 true 반환")
     @Test
     void isSoldOut() {
-        Assertions.assertFalse(new Product("콜라,1000,0").isSoldOut());
+        Assertions.assertTrue(new Product("콜라,1000,0").isSoldOut());
     }
 
     @DisplayName("제품 가격 1000원이 현재 돈 500 원보다 비싸면 true 반환")
     @Test
     void isExpensive() {
-        Assertions.assertFalse(new Product("콜라,1000,1").isExpensive(500));
+        Assertions.assertTrue(new Product("콜라,1000,1").isExpensive(500));
     }
 
     @DisplayName("제품 이름\"콜라\"가 현재 제품 이름과 같다면 true 반환")
     @Test
     void isSameProduct() {
-        Assertions.assertFalse(new Product("콜라,1000,1").isSameProduct("콜라"));
+        Assertions.assertTrue(new Product("콜라,1000,1").isSameProduct("콜라"));
     }
 
     @DisplayName("금액 - 제품 가격 계산 결과 500 원을 반환")
     @Test
     void calculateAmount() {
-        Assertions.assertEquals(new Product("콜라,1000,1").calculateAmount(500), 500);
+        Assertions.assertEquals(new Product("콜라,500,1").calculateAmount(1000), 500);
     }
 }
