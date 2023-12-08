@@ -11,4 +11,10 @@ class ProductsTest {
     void formOfProducts() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> new Products("[콜라-1000-1];[사이다,1500,2]"));
     }
+
+    @DisplayName("투입 금액 500 원이 모든 상품 가격보다 낮다면 true 반환")
+    @Test
+    void isLessMinimumPrice() {
+        Assertions.assertTrue(new Products("[콜라-1000-1];[사이다,1500,2]").isLessMinimumPrice(100));
+    }
 }
