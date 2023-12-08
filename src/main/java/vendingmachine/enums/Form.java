@@ -7,7 +7,7 @@ public enum Form {
     CHANGE_COINS("잔돈"),
     PURCHASE_PRODUCT_DEMAND("구매할 상품명을 입력해 주세요."),
     MACHINE_COIN("{0}원 - {1}개"),
-    AMOUNT("\n투입 금액: {0}원"),
+    AMOUNT("\n투입 금액: %d원"),
     MACHINE_COINS("\n자판기가 보유한 동전");
 
     private final String message;

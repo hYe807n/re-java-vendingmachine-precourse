@@ -33,7 +33,7 @@ public class OutputView {
     }
 
     public static void printAmount(int amount) {
-        System.out.println(MessageFormat.format(Form.AMOUNT.getMessage(), amount));
+        System.out.println(String.format(Form.AMOUNT.getMessage(), amount));
     }
 
     public static void printPurchaseDemand() {
