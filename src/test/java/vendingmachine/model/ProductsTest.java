@@ -31,4 +31,11 @@ class ProductsTest {
             .findByName("콜라").isSameProduct("콜라"));
 
     }
+
+    @DisplayName("없는 제품 \"복숭아\" 이름을 찾았다면 예외 발생")
+    @Test
+    void findByNameNoneExist() {
+        Assertions.assertThrows(IllegalArgumentException.class,
+            () -> new Products("[콜라,1000,1];[사이다,1500,2]").findByName("복숭아"));
+    }
 }
