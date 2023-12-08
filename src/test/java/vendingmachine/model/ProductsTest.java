@@ -48,7 +48,7 @@ class ProductsTest {
     @DisplayName("모든 상품의 개수가 0 개 아니라면 false 반환")
     @Test
     void isNotAllSoldOut() {
-        Assertions.assertTrue(new Products("[콜라,1000,1];[사이다,1500,0]").isAllSoldOut());
+        Assertions.assertFalse(new Products("[콜라,1000,1];[사이다,1500,0]").isAllSoldOut());
     }
 
     @DisplayName("투입 금액 500 원이 모든 상품 가격보다 낮지 않다면 false 반환")
