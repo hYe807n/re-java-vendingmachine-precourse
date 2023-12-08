@@ -23,4 +23,12 @@ class ProductsTest {
     void isAllSoldOut() {
         Assertions.assertTrue(new Products("[콜라,1000,0];[사이다,1500,0]").isAllSoldOut());
     }
+
+    @DisplayName("\"콜라\" 제품 이름을 통해 콜라 product를 반환")
+    @Test
+    void findByName() {
+        Assertions.assertTrue(new Products("[콜라,1000,1];[사이다,1500,2]")
+            .findByName("콜라").isSameProduct("콜라"));
+
+    }
 }
