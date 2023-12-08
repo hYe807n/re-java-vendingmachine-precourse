@@ -36,7 +36,7 @@ public class Validator {
     }
 
     public static void checkMoneyDivide(String money) {
-        if (Integer.parseInt(money) % Coin.COIN_50.getAmount() != 0) {
+        if (Integer.parseInt(money) % Coin.COIN_10.getAmount() != 0) {
             throw new IllegalArgumentException(Exception.MONEY_DIVIDE_EXCEPTION.getMessage());
         }
     }

@@ -26,4 +26,11 @@ class ValidatorTest {
         Assertions.assertThrows(IllegalArgumentException.class,
             () -> Validator.checkMoneyRange("90"));
     }
+
+    @DisplayName("입력받은 금액이 10 원 단위가 아니라면 예외 발생")
+    @Test
+    void checkMoneyDivide() {
+        Assertions.assertThrows(IllegalArgumentException.class,
+            () -> Validator.checkMoneyDivide("91"));
+    }
 }
