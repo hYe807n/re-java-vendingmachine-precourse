@@ -41,4 +41,12 @@ class ValidatorTest {
         Assertions.assertThrows(IllegalArgumentException.class,
             () -> Validator.checkPurchaseState(3000, "콜라", products));
     }
+
+    @DisplayName("구매할 상품이 투입 금액보다 비싸다면 예외 발생")
+    @Test
+    void checkPurchaseStateExpensive() {
+        Products products = new Products("[콜라,5000,1]");
+        Assertions.assertThrows(IllegalArgumentException.class,
+            () -> Validator.checkPurchaseState(3000, "콜라", products));
+    }
 }
