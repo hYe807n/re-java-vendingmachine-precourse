@@ -29,4 +29,10 @@ class ProductTest {
     void isExpensive() {
         Assertions.assertFalse(new Product("콜라,1000,1").isExpensive(500));
     }
+
+    @DisplayName("제품 이름이 현재 제품과 같다면 true 반환")
+    @Test
+    void isSameProduct() {
+        Assertions.assertFalse(new Product("콜라,1000,1").isSameProduct("콜라"));
+    }
 }
