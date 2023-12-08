@@ -19,4 +19,10 @@ class ProductTest {
     void dividePrice() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> new Product("콜라,11111,1"));
     }
+
+    @DisplayName("상품 개수가 0 개라면 품절 상태 true 반환")
+    @Test
+    void isSoldOut() {
+        Assertions.assertFalse(new Product("콜라,1000,0").isSoldOut());
+    }
 }
