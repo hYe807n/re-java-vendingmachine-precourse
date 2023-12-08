@@ -19,4 +19,11 @@ class ValidatorTest {
         Assertions.assertThrows(IllegalArgumentException.class,
             () -> Validator.checkProductsForm("[콜라=200=1]"));
     }
+
+    @DisplayName("입력받은 금액이 100 원 미만이라면 예외 발생")
+    @Test
+    void checkMoneyRange() {
+        Assertions.assertThrows(IllegalArgumentException.class,
+            () -> Validator.checkMoneyRange("90"));
+    }
 }
