@@ -33,4 +33,12 @@ class ValidatorTest {
         Assertions.assertThrows(IllegalArgumentException.class,
             () -> Validator.checkMoneyDivide("91"));
     }
+
+    @DisplayName("구매할 상품이 품절이라면 예외 발생")
+    @Test
+    void checkPurchaseStateSoldOut() {
+        Products products = new Products("[콜라,2000,0]");
+        Assertions.assertThrows(IllegalArgumentException.class,
+            () -> Validator.checkPurchaseState(3000, "콜라", products));
+    }
 }
