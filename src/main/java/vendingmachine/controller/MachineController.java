@@ -22,7 +22,7 @@ public class MachineController {
 
     private void purchaseProduct() {
         int money = this.user.getMoney();
-        while (checkPurchase(money)) {
+        while (products.checkPurchase(money)) {
             OutputView.printAmount(money);
             money = products.purchase(money, InputView.readPurchaseProduct());
         }
@@ -34,12 +34,6 @@ public class MachineController {
         OutputView.printChange();
         machine.calculateChangeCoins(money)
             .forEach((key, value) -> OutputView.printChangeCoin(key.getAmount(), value));
-    }
-
-    private boolean checkPurchase(int money) {
-        return !(user.isLessMinimumCoin()
-            && products.isAllSoldOut()
-            && products.isLessMinimumPrice(money));
     }
 
     private void userMoney() {

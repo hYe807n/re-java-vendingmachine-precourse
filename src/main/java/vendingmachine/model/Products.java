@@ -3,6 +3,7 @@ package vendingmachine.model;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import vendingmachine.enums.Coin;
 import vendingmachine.enums.Exception;
 
 public class Products {
@@ -14,7 +15,7 @@ public class Products {
     public Products(String products) {
         validate(products);
         this.products = Arrays.stream(products.split(PRODUCTS_DIVISION))
-            .map(product -> new Product(product.replace("[]", "")))
+            .map(product -> new Product(product.replaceAll("[\\[\\]]", "")))
             .collect(Collectors.toList());
     }
 
@@ -41,5 +42,12 @@ public class Products {
 
     private void validate(String products) {
         Validator.checkProductsForm(products);
+    }
+
+
+    public boolean checkPurchase(int money) {
+        return !(money < Coin.COIN_10.getAmount()
+            || isAllSoldOut()
+            || isLessMinimumPrice(money));
     }
 }
