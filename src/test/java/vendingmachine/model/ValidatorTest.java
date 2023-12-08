@@ -12,4 +12,11 @@ class ValidatorTest {
         Assertions.assertThrows(IllegalArgumentException.class,
             () -> Validator.checkOnlyNumber("a"));
     }
+
+    @DisplayName("입력받은 상품명, 가격, 개수 양식이 다르다면 예외 발생")
+    @Test
+    void checkProductsForm() {
+        Assertions.assertThrows(IllegalArgumentException.class,
+            () -> Validator.checkProductsForm("[콜라=200=1]"));
+    }
 }
