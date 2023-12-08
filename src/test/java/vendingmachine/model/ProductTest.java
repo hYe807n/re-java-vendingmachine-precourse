@@ -13,4 +13,10 @@ class ProductTest {
     void lessPrice() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> new Product("콜라,10,1"));
     }
+
+    @DisplayName("상품 가격이 10 원으로 나누어떨어지지 않으면 예외 발생")
+    @Test
+    void dividePrice() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new Product("콜라,11111,1"));
+    }
 }
